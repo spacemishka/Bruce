@@ -10,12 +10,22 @@
 #define USB_PID 0x1001 // TODO: Set correct PID for Heltec V3
 
 // TODO: Review NEOPIXEL and LED pin assignments
-#define PIN_NEOPIXEL 48 // TODO: Set correct pin
-static const uint8_t LED_BUILTIN = SOC_GPIO_PIN_COUNT + PIN_NEOPIXEL;
+/* Heltec V3 uses an SSD1608 OLED (128x64), not an RGB display */
+// #define PIN_NEOPIXEL 48 // Not used
+// static const uint8_t LED_BUILTIN = SOC_GPIO_PIN_COUNT + PIN_NEOPIXEL;
+// #define RGB_BUILTIN LED_BUILTIN
+// #define RGB_BRIGHTNESS 64
+//  TODO: If there is a status LED, define it here:
+static const uint8_t LED_BUILTIN = 25; // Example, update if needed
 #define BUILTIN_LED LED_BUILTIN
 #define LED_BUILTIN LED_BUILTIN
-#define RGB_BUILTIN LED_BUILTIN
-#define RGB_BRIGHTNESS 64
+
+// OLED Display (SSD1608/SSD1306)
+#define HAS_OLED 1
+#define OLED_TYPE SSD1608
+#define OLED_WIDTH 128
+#define OLED_HEIGHT 64
+// TODO: Set correct I2C pins for OLED if different from SDA/SCL
 
 // TODO: Update keyboard and HID definitions if needed
 #define HAS_KEYBOARD
